@@ -1,3 +1,4 @@
+//! Implementation of tokio_core::io::Io for stdin/stdout streams
 
 use futures::{
     Async,
@@ -16,6 +17,7 @@ use tokio_core::io::{
     Io
 };
 
+/// Type that implements tokio_core::io::Io for stdin/stdout streams
 pub struct Stdio {
     stdin_buffer_receiver : rb::Receiver< u8 >,
     stdout_buffer_sender  : rb::Sender< u8 >
@@ -88,6 +90,10 @@ impl Io for Stdio {
 
 impl Stdio {
 
+    /// Create a new instance of Stdio with the given buffer sizes for stdin and stdout
+    ///
+    /// # Panics
+    /// If either stdin_buffer_size == 0 or stdout_buffer_size == 0
     pub fn new( stdin_buffer_size : usize, stdout_buffer_size : usize ) -> Self {
         Stdio {
             stdin_buffer_receiver : Stdio::start_stdin_thread( stdin_buffer_size ),
