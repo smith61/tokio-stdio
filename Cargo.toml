@@ -1,0 +1,19 @@
+[package]
+name = "tokio-stdio"
+version = "0.1.0"
+authors = ["Jacob Smith <jacob101607@yahoo.com>"]
+
+license = "MIT"
+description = """
+Implementation of tokio_core::io::Io for stdin/stdout streams
+"""
+
+homepage   = "https://github.com/smith61/tokio-stdio"
+repository = "https://github.com/smith61/tokio-stdio"
+readme     = "README.md"
+
+[dependencies]
+futures = "0.1"
+futures_rb = { git = "https://github.com/smith61/futures_rb" }
+log = "0.3"
+tokio-core = "0.1"
