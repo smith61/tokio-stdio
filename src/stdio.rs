@@ -167,6 +167,13 @@ impl Stdio {
                         return;
                     }
                 }
+                match stdout.flush( ) {
+                    Ok( _ ) => { },
+                    Err( e ) => {
+                        trace!( "Error in stdout write thread while flushing stdout, assuming closed: {:?}", e );
+                        return;
+                    }
+                }
             }
         } );
 
